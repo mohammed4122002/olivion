@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Audiowide , Golos_Text, Cal_Sans } from "next/font/google";
 import "./globals.css";
+import Navbar from "./Components/Navbar/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const audiowide = Audiowide({
+  weight:"400",
+  variable:"--font-audiowide",
+    subsets: ["latin"],
+});
+
+const golostext = Golos_Text({
+  weight:"400",
+  variable: "--font-golostext",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const calsans = Cal_Sans({
+  weight:"400",
+  variable: "--font-calsans",
   subsets: ["latin"],
 });
 
@@ -25,8 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${audiowide.variable} ${calsans.variable} ${golostext.variable} antialiased`}
       >
+        <Navbar/>
         {children}
       </body>
     </html>
