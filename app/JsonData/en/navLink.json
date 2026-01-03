@@ -1,0 +1,68 @@
+[
+  {
+    "label": "Home",
+    "href": "/"
+  },
+  {
+    "label": "Services",
+    "href": "/UI-Components/Pages/Services"
+  },
+  {
+    "label": "Projects",
+    "href": "/UI-Components/Projects",
+    "dropdown": [
+      {
+        "label": "Projects",
+        "href": "/UI-Components/Projects"
+      },
+      {
+        "label": "Projects Details",
+        "href": "/UI-Components/Projects/2"
+      }
+    ]
+  },
+  {
+    "label": "Blog",
+    "href": "#",
+    "dropdown": [
+      {
+        "label": "Blog",
+        "href": "/UI-Components/Blogs"
+      },
+      {
+        "label": "Blog Details",
+        "href": "/UI-Components/Blogs/2"
+      }
+    ]
+  },
+  {
+    "label": "Pages",
+    "href": "#",
+    "dropdown": [
+      {
+        "label": "About",
+        "href": "/UI-Components/Pages/About"
+      },
+      {
+        "label": "Team",
+        "href": "/UI-Components/Pages/Teams"
+      },
+      {
+        "label": "Gallery",
+        "href": "/UI-Components/Pages/Gallery"
+      },
+      {
+        "label": "Contact",
+        "href": "/UI-Components/Pages/Contact"
+      },
+      {
+        "label": "Page 404",
+        "href": "/UI-Components/Pages/Page404"
+      }
+    ]
+  },
+  {
+    "label": "Contact Us",
+    "href": "/UI-Components/Pages/Contact"
+  }
+]

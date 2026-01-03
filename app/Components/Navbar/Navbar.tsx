@@ -1,51 +1,35 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-// تعريف أنواع البيانات
-type Navlink = {
-  label: string;
-  href: string;
-  dropdown?: Navlink[];
-};
-
-const navLinks: Navlink[] = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/UI-Components/Pages/Services" },
-  {
-    label: "Projects",
-    href: "/UI-Components/Projects",
-    dropdown: [
-      { label: "Projects", href: "/UI-Components/Projects" },
-      { label: "Projects Details", href: "/UI-Components/Projects/2" },
-    ],
-  },
-  {
-    label: "Blog",
-    href: "#",
-    dropdown: [
-      { label: "Blog", href: "/UI-Components/Blogs" },
-      { label: "Blog Details", href: "/UI-Components/Blogs/2" },
-    ],
-  },
-  {
-    label: "Pages",
-    href: "#",
-    dropdown: [
-      { label: "About", href: "/UI-Components/Pages/About" },
-      { label: "Team", href: "/UI-Components/Pages/Teams" },
-      { label: "Gallery", href: "/UI-Components/Pages/Gallery" },
-      { label: "Contact", href: "/UI-Components/Pages/Contact" },
-      { label: "Page 404", href: "/UI-Components/Pages/Page404" },
-    ],
-  },
-  { label: "Contact Us", href: "/UI-Components/Pages/Contact" },
-];
+// استيراد البيانات من ملفات الـ JSON
+import navLinksEn from "../../JsonData/en/navLink.json";
+import navLinksAr from "../../JsonData/ar/navLink.json";
 
 const Navbar = () => {
+  // حالة اللغة الافتراضية
+  const [lang, setLang] = useState<"en" | "ar">("en");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // تحديد القائمة والبيانات بناءً على اللغة المختارة
+  const navLinks = lang === "en" ? navLinksEn : navLinksAr;
+  
+  const translations = {
+    callUs: lang === "en" ? "Call Us now" : "اتصل بنا الآن",
+    quote: lang === "en" ? "Get a Quote!" : "طلب سعر",
+    langToggle: lang === "en" ? "العربية" : "English"
+  };
+
+  // تبديل اللغة وتغيير اتجاه الصفحة (RTL/LTR)
+  const toggleLanguage = () => {
+    setLang((prev) => (prev === "en" ? "ar" : "en"));
+  };
+
+  useEffect(() => {
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   // منطق فتح وإغلاق القوائم المنسدلة في الجوال
   const toggleDropdown = (label: string) => {
@@ -65,7 +49,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`w-full transition-all duration-500 fixed top-0 left-0 z-[100] ${
+      className={` w-full transition-all duration-500 fixed top-0 left-0 z-[100] ${
         isScrolled ? "bg-white shadow-md py-2" : "bg-white lg:bg-transparent py-5"
       }`}
     >
@@ -77,16 +61,16 @@ const Navbar = () => {
           </Link>
 
           {/** Desktop Nav */}
-          <nav className="hidden lg:flex space-x-6 ms-10">
-            {navLinks.map((link) =>
+          <nav className="hidden lg:flex space-x-5 rtl:space-x-reverse ms-10">
+            {navLinks.map((link: any) =>
               link.dropdown ? (
                 <div key={link.label} className="relative group z-50">
                   <button className="flex items-center gap-1 text-xl hover:text-[var(--prim)] transition-all">
-                    {link.label} <i className="ri-arrow-down-s-line"></i>
+                    {link.label}<i className="ri-arrow-down-s-line "></i>
                   </button>
-                  <div className="absolute left-0 top-full pt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300">
+                  <div className={`absolute ${lang === 'en' ? 'left-0' : 'right-0'} top-full pt-4 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300`}>
                     <div className="bg-white shadow-xl border border-gray-100 rounded-lg min-w-[200px] py-2">
-                      {link.dropdown.map((item) => (
+                      {link.dropdown.map((item: any) => (
                         <Link
                           key={item.label}
                           href={item.href}
@@ -113,10 +97,18 @@ const Navbar = () => {
 
         {/** Right Section */}
         <div className="flex items-center gap-4">
+          {/* زر تبديل اللغة */}
+          <button 
+            onClick={toggleLanguage}
+            className="px-3 py-1 border border-[var(--prim)] text-[var(--prim)] rounded-md hover:bg-[var(--prim)] hover:text-white transition-all font-bold text-sm"
+          >
+            {translations.langToggle}
+          </button>
+
           <button className="hidden lg:flex items-center gap-2">
             <i className="bi bi-telephone-inbound text-2xl text-[var(--prim)]"></i>
             <div className="flex flex-col items-start leading-tight">
-              <span className="text-xs text-gray-500">Call Us now</span>
+              <span className="text-xs text-gray-500">{translations.callUs}</span>
               <h3 className="font-bold text-[var(--prim)]">91+ (123) 456 789</h3>
             </div>
           </button>
@@ -125,7 +117,7 @@ const Navbar = () => {
             href="/UI-Components/Pages/Contact/"
             className="bg-[var(--prim)] text-white font-medium px-6 py-3 rounded-full hover:bg-transparent hover:text-black hover:border-black border border-transparent transition-all duration-300"
           >
-            Get a Quote!
+            {translations.quote}
           </Link>
 
           <button
@@ -144,13 +136,13 @@ const Navbar = () => {
         }`}
       >
         <div className="px-[8%] space-y-3">
-          {navLinks.map((link) => (
+          {navLinks.map((link: any) => (
             <div key={link.label} className="border border-gray-100 rounded-lg overflow-hidden">
               {link.dropdown ? (
                 <>
                   <button
                     onClick={() => toggleDropdown(link.label)}
-                    className="w-full flex justify-between items-center px-4 py-3 text-left font-medium"
+                    className="w-full flex justify-between items-center px-4 py-3 text-left rtl:text-right font-medium"
                   >
                     {link.label}
                     <i className={`ri-arrow-down-s-line transition-transform ${openDropdowns[link.label] ? 'rotate-180' : ''}`}></i>
@@ -160,7 +152,7 @@ const Navbar = () => {
                       openDropdowns[link.label] ? "max-h-60 py-2" : "max-h-0"
                     }`}
                   >
-                    {link.dropdown.map((sub) => (
+                    {link.dropdown.map((sub: any) => (
                       <Link
                         key={sub.label}
                         href={sub.href}
@@ -175,7 +167,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={link.href}
-                  className="block px-4 py-3 font-medium"
+                  className="block px-4 py-3 font-medium rtl:text-right"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}

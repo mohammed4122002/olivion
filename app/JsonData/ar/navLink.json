@@ -1,0 +1,68 @@
+[
+  {
+    "label": "الرئيسية",
+    "href": "/"
+  },
+  {
+    "label": "خدماتنا",
+    "href": "/UI-Components/Pages/Services"
+  },
+  {
+    "label": "المشاريع",
+    "href": "/UI-Components/Projects",
+    "dropdown": [
+      {
+        "label": "المشاريع",
+        "href": "/UI-Components/Projects"
+      },
+      {
+        "label": "تفاصيل المشروع",
+        "href": "/UI-Components/Projects/2"
+      }
+    ]
+  },
+  {
+    "label": "المدونة",
+    "href": "#",
+    "dropdown": [
+      {
+        "label": "المدونة",
+        "href": "/UI-Components/Blogs"
+      },
+      {
+        "label": "تفاصيل المدونة",
+        "href": "/UI-Components/Blogs/2"
+      }
+    ]
+  },
+  {
+    "label": "الصفحات",
+    "href": "#",
+    "dropdown": [
+      {
+        "label": "من نحن",
+        "href": "/UI-Components/Pages/About"
+      },
+      {
+        "label": "فريق العمل",
+        "href": "/UI-Components/Pages/Teams"
+      },
+      {
+        "label": "معرض الصور",
+        "href": "/UI-Components/Pages/Gallery"
+      },
+      {
+        "label": "اتصل بنا",
+        "href": "/UI-Components/Pages/Contact"
+      },
+      {
+        "label": "صفحة 404",
+        "href": "/UI-Components/Pages/Page404"
+      }
+    ]
+  },
+  {
+    "label": "اتصل بنا",
+    "href": "/UI-Components/Pages/Contact"
+  }
+]
