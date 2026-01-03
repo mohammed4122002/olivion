@@ -96,7 +96,7 @@ body {
 }
 
 .hero-span::after {
-    content: ""; 
+    content: "";
     position: absolute;
     top: 50%;
     inset-inline-start: 18px; /* وضع النقطة في البداية تلقائياً */
@@ -107,7 +107,7 @@ body {
     background-color: var(--prim);
 }
 
-.hero-bg-elm{
+.hero-bg-elm {
     position: absolute;
     top: 0;
     left: 30%;
@@ -116,32 +116,86 @@ body {
     height: 400px;
     background-color: var(--white);
     border-radius: 100%;
-   box-shadow: 0 0 40px rgba(131, 131, 131, 0.1);
-
+    box-shadow: 0 0 40px rgba(131, 131, 131, 0.1);
 }
 
-.hero-bg-elm2{
+.hero-bg-elm2 {
     position: absolute;
     top: 50%;
     left: 5%;
     transform: translate(-50%, -50%);
     width: 700px;
     height: 700px;
-    background-color: rgba(195,195,195,0.3);
+    background-color: rgba(195, 195, 195, 0.3);
     border-radius: 100%;
-   box-shadow: 0 0 40px rgba(131, 131, 131, 0.1);
-
+    box-shadow: 0 0 40px rgba(131, 131, 131, 0.1);
 }
 
-
-.partner-swiper{
-padding: 20px !important;
+.partner-swiper {
+    padding: 20px !important;
 }
-.partner-img{
+.partner-img {
     transition: var(--tranistion-regular);
     cursor: pointer;
-
 }
-.partner-img:hover{
+.partner-img:hover {
     transform: scale(1.1);
+}
+
+/*about */
+.about {
+    background-image: url(../public/About-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.title {
+    position: relative;
+    /* نضمن أن المحتوى يظهر فوق الخطوط */
+    z-index: 10; 
+}
+
+/* الخط الأفقي العلوي */
+.title::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    /* يبدأ من البداية حسب اللغة */
+    inset-inline-start: 10px; 
+    width: 100%;
+    height: 1px;
+    background-color: rgba(131, 131, 131, 0.3);
+}
+
+/* الخط الرأسي الجانبي */
+.title::before {
+    content: "";
+    position: absolute;
+    /* يرتفع قليلاً فوق الحاوية */
+    top: -50px; 
+    /* يوضع في نهاية جهة الـ Badge حسب اللغة (يمين في EN، يسار في AR) */
+    inset-inline-end: 0; 
+    width: 1px;
+    height: 250px;
+    background-color: rgba(131, 131, 131, 0.3);
+    /* لضمان عدم تداخله مع النص */
+    z-index: -1; 
+}
+
+.title-span {
+    position: relative;
+    padding-inline-start: 40px; /* مساحة للنقطة حسب اتجاه اللغة */
+    display: inline-block;
+}
+
+.title-span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    inset-inline-start: 18px; /* وضع النقطة في البداية تلقائياً */
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--prim);
 }

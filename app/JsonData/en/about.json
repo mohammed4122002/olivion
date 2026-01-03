@@ -1,0 +1,14 @@
+{
+  "about": {
+    "badge": "About Olivion",
+    "title": "We Shape",
+    "titleAccent": "Interior Designs, Crafting",
+    "titleEnd": "Timeless and Inspiring Spaces",
+    "stats": [
+      { "value": 2013, "suffix": "", "title": "Year Established", "desc": "Since our founding in 2013..." },
+      { "value": 150, "suffix": "+", "title": "Projects Completed", "desc": "We have successfully completed over 150 projects..." },
+      { "value": 50, "suffix": "+", "title": "Awards Won", "desc": "Our work has been recognized with more than 50 awards..." },
+      { "value": 100, "suffix": "+", "title": "Happy Clients", "desc": "We pride ourselves on having over 100 happy clients..." }
+    ]
+  }
+}
