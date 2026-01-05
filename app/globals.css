@@ -199,3 +199,36 @@ body {
     border-radius: 50%;
     background-color: var(--prim);
 }
+
+
+
+
+
+/* Paralex section*/
+
+.Paralex-wrap{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    will-change: transform , opacity;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 50 black;
+  
+
+}
+.Paralex-wrap::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: -1;
+}
+.Paralex-content{
+    height: 80vh;
+}
