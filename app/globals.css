@@ -152,7 +152,7 @@ body {
 .title {
     position: relative;
     /* نضمن أن المحتوى يظهر فوق الخطوط */
-    z-index: 10; 
+    z-index: 10;
 }
 
 /* الخط الأفقي العلوي */
@@ -161,7 +161,7 @@ body {
     position: absolute;
     top: 0;
     /* يبدأ من البداية حسب اللغة */
-    inset-inline-start: 10px; 
+    inset-inline-start: 10px;
     width: 100%;
     height: 1px;
     background-color: rgba(131, 131, 131, 0.3);
@@ -172,14 +172,14 @@ body {
     content: "";
     position: absolute;
     /* يرتفع قليلاً فوق الحاوية */
-    top: -50px; 
+    top: -50px;
     /* يوضع في نهاية جهة الـ Badge حسب اللغة (يمين في EN، يسار في AR) */
-    inset-inline-end: 0; 
+    inset-inline-end: 0;
     width: 1px;
     height: 250px;
     background-color: rgba(131, 131, 131, 0.3);
     /* لضمان عدم تداخله مع النص */
-    z-index: -1; 
+    z-index: -1;
 }
 
 .title-span {
@@ -200,26 +200,20 @@ body {
     background-color: var(--prim);
 }
 
-
-
-
-
 /* Paralex section*/
 
-.Paralex-wrap{
+.Paralex-wrap {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
     z-index: 1;
-    will-change: transform , opacity;
+    will-change: transform, opacity;
     border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 0 50 black;
-  
-
 }
-.Paralex-wrap::after{
+.Paralex-wrap::after {
     content: "";
     position: absolute;
     top: 0;
@@ -229,6 +223,150 @@ body {
     background-color: rgba(0, 0, 0, 0.65);
     z-index: -1;
 }
-.Paralex-content{
+.Paralex-content {
     height: 80vh;
+}
+
+/* service*/
+.service::after {
+    content: "Olivion";
+    position: absolute;
+    line-height: 9rem;
+    bottom: 0;
+    left: 10%;
+    font-size: 12rem;
+    font-weight: 800;
+    font-family: var(--Audiowide);
+    opacity: 0.1;
+    color: gray;
+}
+
+.service::before {
+    content: "";
+    position: absolute;
+    background-image: url(../public/service-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    bottom: -13%;
+    right: 10%;
+    height: 450px;
+    width: 800px;
+    z-index: 1;
+}
+
+[dir="rtl"] .service::before  {
+    right: auto;
+    left: 10%;
+}
+[dir="rtl"] .service::after  {
+    left: auto;
+    right: 10%;
+}
+.service-img {
+    transform: scale(0);
+    opacity: 0;
+    transition: var(--tranistion-slow);
+}
+
+.service-card:hover .service-img {
+    transform: scale(0.9);
+    opacity: 1;
+}
+.service-card:hover i {
+    transform: rotate(45deg);
+    background-color: var(--prim);
+    color: var(--white);
+    padding: 6px 10px;
+    border-radius: 50%;
+}
+
+
+
+/* expertise-slider */
+
+
+.expertise-slider {
+    position: absolute;
+    bottom: -14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.expertise-slider img {
+    animation: Anim-scale 4s forwards linear;
+    border-radius: 20px;
+}
+@keyframes Anim-scale {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+
+
+
+.pricing-wrap{
+    background-image: url(../public/pricing-banner.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+}
+.pricing-wrap::after{
+    content: "";
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom , #0000004f 10% , #000000);
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 991px) {
+    .about {
+        background-position: top center;
+    }
+    .service::after {
+        font-size: 5rem;
+    }
+    .service::before {
+        height: 350px;
+        width: 500px;
+        bottom: 10%;
+    }
+    .service-img {
+        transform: scale(1);
+        opacity: 1;
+        transition: var(--tranistion-slow);
+    }
+    .expertise-slider {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .service::before {
+        display: none;
+    }
 }

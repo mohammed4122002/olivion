@@ -1,0 +1,15 @@
+{
+  "expertise": {
+    "badge": "Our expertise",
+    "title": "Curating the perfect",
+    "titleAccent": "pieces to complete",
+    "titleEnd": "your space",
+    "items": [
+      { "id": 1, "title": "Renovation and remodeling", "desc": "Eget odin non ac mi", "image": "/expertise1.jpg" },
+      { "id": 2, "title": "Custom Furniture Design", "desc": "Eget odin non ac mi", "image": "/expertise2.jpg" },
+      { "id": 3, "title": "Space Planning", "desc": "Eget odin non ac mi", "image": "/expertise3.jpg" },
+      { "id": 4, "title": "Interior Styling", "desc": "Eget odin non ac mi", "image": "/expertise4.jpg" }
+    ],
+    "slides": ["/banner-slide-1.jpg", "/banner-slide-2.jpg"]
+  }
+}

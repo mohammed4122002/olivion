@@ -1,0 +1,53 @@
+{
+  "services": {
+    "badge": "Our Services",
+    "title": "Explore our",
+    "titleAccent": "comprehensive interior design",
+    "titleEnd": "services",
+    "description": "We specialize in transforming visions into reality. Explore our portfolio of innovative architectural and interior design projects crafted with precision.",
+    "items": [
+      {
+        "id": 1,
+        "number": "01",
+        "title": "Residential Interior Design",
+        "desc": "Tailored design services for modern homes.",
+        "image": "/service-1.jpg"
+      },
+      {
+        "id": 2,
+        "number": "02",
+        "title": "Commercial Space Planning",
+        "desc": "Optimizing offices for business growth.",
+        "image": "/service-2.jpg"
+      },
+      {
+        "id": 3,
+        "number": "03",
+        "title": "Hospitality Design",
+        "desc": "Luxurious experiences for hotels and restaurants.",
+        "image": "/service-3.jpg"
+      },
+      {
+        "id": 4,
+        "number": "04",
+        "title": "Furniture Curation",
+        "desc": "Premium furniture pieces to match your style.",
+        "image": "/service-4.jpg"
+      },
+      {
+        "id": 5,
+        "number": "05",
+        "title": "Lighting Design",
+        "desc": "Custom lighting solutions to enhance ambiance.",
+        "image": "/service-5.jpg"
+      },
+      {
+        "id": 6,
+        "number": "06",
+        "title": "Renovation Services",
+        "desc": "Complete remodeling to breathe new life.",
+        "image": "/service-6.jpg"
+      }
+    ]
+  }
+}

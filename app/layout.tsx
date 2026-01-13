@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Audiowide, Golos_Text, Tajawal } from "next/font/google"; // أضفنا Tajawal للعربية
 import "./globals.css";
 import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
 
 // الخط الإنجليزي العريض
 const audiowide = Audiowide({
@@ -45,6 +46,7 @@ export default function RootLayout({
         <main>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

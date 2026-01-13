@@ -1,0 +1,15 @@
+{
+  "expertise": {
+    "badge": "خبراتنا",
+    "title": "ننسق",
+    "titleAccent": "القطع المثالية لتكمل",
+    "titleEnd": "مساحتك الخاصة",
+    "items": [
+      { "id": 1, "title": "التجديد وإعادة النمذجة", "desc": "وصف قصير للخدمة هنا", "image": "/expertise1.jpg" },
+      { "id": 2, "title": "تصميم الأثاث المخصص", "desc": "وصف قصير للخدمة هنا", "image": "/expertise2.jpg" },
+      { "id": 3, "title": "تخطيط المساحات", "desc": "وصف قصير للخدمة هنا", "image": "/expertise3.jpg" },
+      { "id": 4, "title": "تنسيق الديكور الداخلي", "desc": "وصف قصير للخدمة هنا", "image": "/expertise4.jpg" }
+    ],
+    "slides": ["/banner-slide-1.jpg", "/banner-slide-2.jpg"]
+  }
+}
