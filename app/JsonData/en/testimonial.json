@@ -1,0 +1,24 @@
+{
+    "testimonial": {
+        "badge": "Testimonials",
+        "title": "What Our",
+        "titleAccent": "Clients Say",
+        "titleEnd": "About Us",
+        "items": [
+            {
+                "id": 1,
+                "name": "John Doe",
+                "role": "Home Owner",
+                "content": "Olivion transformed our living room into a master piece. Their attention to detail is unmatched.",
+                "image": "/avatar1.jpg"
+            },
+            {
+                "id": 2,
+                "name": "Sarah Smith",
+                "role": "Architect",
+                "content": "Working with Olivion was a breeze. They understood our vision and brought it to life perfectly.",
+                "image": "/avatar2.jpg"
+            }
+        ]
+    }
+}

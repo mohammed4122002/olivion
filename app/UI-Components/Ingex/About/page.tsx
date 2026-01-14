@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import CountUp from "react-countup";
+import { motion } from "framer-motion";
 
 // استيراد الصور
 import AboutImg1 from "@/public/About-1.jpg";
@@ -26,21 +27,30 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
-  // جلب البيانات بناءً على اللغة
   const content = lang === "ar" ? aboutAr.about : aboutEn.about;
 
   if (!content) return null;
 
   return (
-    <section className="py-20 overflow-hidden" aria-labelledby="about-heading">
+    <section className="py-32 overflow-hidden bg-white" aria-labelledby="about-heading">
       <div className="px-[8%] lg:px-[12%] about">
-        <div className="flex flex-col lg:flex-row gap-10">
-          <div className="w-full lg:w-1/3 title pt-8">
+        <div className="flex flex-col lg:flex-row gap-10 mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-1/3 title pt-8"
+          >
             <span className="rounded-full title-span border border-gray-400 px-6 py-2 uppercase font-bold text-sm tracking-widest text-gray-700">
               {content.badge}
             </span>
-          </div>
-          <div className="w-full lg:w-2/3">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-2/3"
+          >
             <h2
               id="about-heading"
               className="text-4xl md:text-7xl font-semibold leading-tight text-black"
@@ -49,73 +59,73 @@ const About = () => {
               <span className="text-[var(--prim)]">{content.titleAccent}</span>{" "}
               {content.titleEnd}
             </h2>
-          </div>
+          </motion.div>
         </div>
 
         {/* شبكة الصور */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {[AboutImg1, AboutImg2, AboutImg3].map((img, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className={`about-image ${
-                idx === 1 ? "lg:pt-10" : idx === 2 ? "lg:pt-20" : ""
-              }`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.2 }}
+              className={`about-image group relative rounded-[3rem] overflow-hidden shadow-2xl ${idx === 1 ? "lg:mt-12" : idx === 2 ? "lg:mt-24" : ""
+                }`}
             >
               <Image
                 src={img}
-                alt={
-                  lang === "en"
-                    ? `Gallery image ${idx + 1}`
-                    : `صورة المعرض ${idx + 1}`
-                }
-                className="rounded-3xl shadow-2xl transition-all duration-500 hover:-translate-y-2 object-cover"
+                alt={lang === "en" ? `Gallery image ${idx + 1}` : `صورة المعرض ${idx + 1}`}
+                className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
               />
-            </div>
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      <div className="px-[8%] lg:px-[12%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pt-24 pb-10">
-        {content?.stats?.map(
-          (
-            stat: {
-              value: number;
-              suffix: string;
-              title: string;
-              desc: string;
-            },
-            index: number
-          ) => (
-            <div key={index} className="about-card group">
-              <div className="text-5xl tracking-wide font-bold mb-6 text-black flex items-center gap-1">
-                {/* الحل: إضافة شرط التأكد من وجود القيمة قبل رندرة CountUp */}
-                {stat.value !== undefined && stat.value !== null ? (
-                  <CountUp
-                    start={0}
-                    end={Number(stat.value)}
-                    duration={3}
-                    enableScrollSpy
-                    scrollSpyOnce={true} // لمنع تكرار الخطأ عند السكرول
-                  />
-                ) : (
-                  <span>0</span>
-                )}
-
-                <span className="text-(--prim)">{stat.suffix}</span>
-              </div>
-
-              <div className="about-content py-6 border-t border-gray-400/50">
-                <h3 className="mb-3 text-2xl font-bold text-gray-900">
-                  {stat.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">{stat.desc}</p>
-              </div>
+      <div className="px-[8%] lg:px-[12%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-40 pb-10">
+        {content?.stats?.map((stat: any, index: number) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="about-card group"
+          >
+            <div className="text-6xl tracking-tighter font-black mb-8 text-black flex items-baseline gap-1">
+              {stat.value !== undefined && stat.value !== null ? (
+                <CountUp
+                  start={0}
+                  end={Number(stat.value)}
+                  duration={3}
+                  enableScrollSpy
+                  scrollSpyOnce={true}
+                >
+                  {({ countUpRef }) => (
+                    <span ref={countUpRef} />
+                  )}
+                </CountUp>
+              ) : (
+                <span>0</span>
+              )}
+              <span className="text-[var(--prim)]">{stat.suffix}</span>
             </div>
-          )
-        )}
+
+            <div className="py-8 border-t border-gray-200">
+              <h3 className="mb-4 text-2xl font-bold text-black uppercase tracking-wide">
+                {stat.title}
+              </h3>
+              <p className="text-gray-500 text-lg leading-relaxed">{stat.desc}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 };
 
 export default About;
+

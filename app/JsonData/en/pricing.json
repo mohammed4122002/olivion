@@ -1,0 +1,35 @@
+{
+    "pricing": {
+        "badge": "Our Pricing Plans",
+        "title": "Design your",
+        "titleAccent": "space, Know",
+        "titleEnd": "services",
+        "promoTitle": "Your dreams,",
+        "promoAccent": "our mission, let's",
+        "promoEnd": "make it happen.",
+        "plans": [
+            {
+                "id": 1,
+                "name": "Basic",
+                "price": "$99",
+                "features": [
+                    "Interior Design",
+                    "Color Consultation",
+                    "Space Planning"
+                ],
+                "btn": "Get Started"
+            },
+            {
+                "id": 2,
+                "name": "Premium",
+                "price": "$199",
+                "features": [
+                    "3D Rendering",
+                    "Furniture Selection",
+                    "Project Management"
+                ],
+                "btn": "Choose Plan"
+            }
+        ]
+    }
+}

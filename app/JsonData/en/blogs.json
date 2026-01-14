@@ -1,0 +1,23 @@
+{
+    "blogs": {
+        "badge": "Our Blog",
+        "title": "Latest",
+        "titleAccent": "News",
+        "items": [
+            {
+                "id": 1,
+                "title": "Modern Interior Trends 2024",
+                "date": "Oct 15, 2023",
+                "image": "/blog1.jpg",
+                "link": "/blog/1"
+            },
+            {
+                "id": 2,
+                "title": "Color Psychology in Home Decor",
+                "date": "Nov 20, 2023",
+                "image": "/blog2.jpg",
+                "link": "/blog/2"
+            }
+        ]
+    }
+}

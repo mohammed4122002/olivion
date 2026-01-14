@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 // استيراد ملفات الترجمة
 import servicesEn from "@/app/JsonData/en/services.json";
@@ -22,66 +23,76 @@ const Services = () => {
   if (!content) return null;
 
   return (
-    // أضفنا كلاس "service" هنا ليفعل الـ ::before والـ ::after من الـ CSS الخاص بك
-    <section className="px-[8%] lg:px-[12%] pt-20 pb-60 service relative " aria-labelledby="services-heading">
-      
+    <section className="px-[8%] lg:px-[12%] py-32 service relative bg-white" aria-labelledby="services-heading">
+
       {/* Header Section */}
-      <div className="flex flex-col lg:flex-row gap-10 mb-16 relative z-10">
-        <div className="w-full lg:w-1/3 title pt-8">
+      <div className="flex flex-col lg:flex-row gap-10 mb-20 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="w-full lg:w-1/3 title pt-8"
+        >
           <span className="rounded-full title-span border border-gray-400 px-6 py-2 uppercase font-bold text-sm tracking-widest text-gray-700">
             {content.badge}
           </span>
-        </div>
-        <div className="w-full lg:w-2/3">
-          <h2 id="services-heading" className="text-4xl md:text-7xl font-semibold leading-tight text-black">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="w-full lg:w-2/3"
+        >
+          <h2 id="services-heading" className="text-4xl md:text-8xl font-semibold leading-tight text-black">
             {content.title}{" "}
             <span className="text-[var(--prim)]">{content.titleAccent}</span>{" "}
             {content.titleEnd}
           </h2>
-          <p className="text-gray-400 mt-6 text-lg max-w-2xl leading-relaxed">
+          <p className="text-gray-400 mt-8 text-xl max-w-2xl leading-relaxed">
             {content.description}
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Services List */}
       <div className="flex flex-col relative z-10">
-        {content.items.map((item) => (
-          <div 
-            key={item.id} 
-            className="service-card border-b border-gray-400 cursor-pointer py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 group transition-all duration-500"
+        {content.items.map((item: any, index: number) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="service-card border-b border-gray-300 cursor-pointer py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-10 group transition-all duration-500"
           >
-            {/* الجزء الأيسر: الرقم والمحتوى */}
-            <div className="flex flex-col md:flex-row w-full md:w-[65%] gap-4 md:gap-12 items-start md:items-center">
-              <h4 className="text-4xl font-light text-gray-500">
+            <div className="flex flex-col md:flex-row w-full md:w-[65%] gap-6 md:gap-16 items-start md:items-center">
+              <h4 className="text-5xl font-light text-gray-300 group-hover:text-[var(--prim)] transition-colors">
                 {item.number}
               </h4>
               <div className="service-content">
-                <h3 className="mb-2 text-3xl md:text-5xl font-medium transition-colors duration-300 group-hover:text-[var(--prim)]">
+                <h3 className="mb-4 text-3xl md:text-6xl font-medium transition-colors duration-300 group-hover:text-black">
                   {item.title}
                 </h3>
-                <p className="text-gray-400 text-lg">
+                <p className="text-gray-400 text-lg md:text-xl max-w-xl">
                   {item.desc}
                 </p>
               </div>
             </div>
 
-            {/* الجزء الأوسط: الصورة (يتم التحكم بظهورها من الـ CSS) */}
-            <div className="overflow-hidden h-[180px] md:h-[210px] w-full md:w-[300px] relative rounded-2xl">
+            <div className="overflow-hidden h-[200px] md:h-[250px] w-full md:w-[350px] relative rounded-[2rem] border-2 border-transparent group-hover:border-[var(--prim)] transition-all duration-500">
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                className="service-img object-cover rounded-2xl border-2 border-black"
-                sizes="(max-width: 768px) 100vw, 300px"
+                className="service-img object-cover rounded-[2rem] transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, 350px"
               />
             </div>
 
-            {/* الجزء الأيمن: الأيقونة (يتحول شكلها عند الـ hover بناءً على الـ CSS) */}
-            <div className="text-3xl transition-all duration-300">
-              <i className="bi bi-arrow-up-right"></i>
+            <div className="text-4xl transition-all duration-300 text-gray-300 group-hover:text-[var(--prim)]">
+              <i className={`bi bi-arrow-up-${lang === 'en' ? 'right' : 'left'} group-hover:rotate-45 transition-transform`}></i>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

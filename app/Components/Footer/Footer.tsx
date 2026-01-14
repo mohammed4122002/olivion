@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import navEn from "@/app/JsonData/en/navLink.json";
 import navAr from "@/app/JsonData/ar/navLink.json";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const [lang, setLang] = useState("en");
@@ -19,20 +20,40 @@ const Footer = () => {
   const nav = lang === "ar" ? (navAr as any) : (navEn as any);
 
   return (
-    <footer className={`bg-[#111] text-gray-200 pt-12 pb-8 ${lang === "ar" ? "text-right" : "text-left"}`}>
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex flex-col md:flex-row md:justify-between gap-8">
-          <div className="w-full md:w-1/3">
-            <h3 className="text-2xl font-bold text-white mb-4">Olivion</h3>
-            <p className="text-gray-400">Modern digital solutions that craft beautiful experiences.</p>
+    <footer className={`bg-black text-white pt-24 pb-12 ${lang === "ar" ? "text-right" : "text-left"}`}>
+      <div className="px-[8%] lg:px-[12%]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+          <div className="flex flex-col gap-8">
+            <Link href="/" className="text-4xl font-bold Audiowide group">
+              Oli<span className="text-[var(--prim)] group-hover:text-white transition-colors">vion</span>
+            </Link>
+            <p className="text-gray-400 text-lg leading-relaxed max-w-xs">
+              {lang === 'en'
+                ? "Crafting premium interior spaces that inspire and elevate your lifestyle."
+                : "نبتكر مساحات داخلية فاخرة تلهم وترتقي بأسلوب حياتك."}
+            </p>
+            <div className="flex gap-4">
+              {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn].map((Icon, i) => (
+                <motion.a
+                  key={i}
+                  href="#"
+                  whileHover={{ y: -5, backgroundColor: '#caa05c', color: '#000' }}
+                  className="w-12 h-12 rounded-full border border-gray-800 flex items-center justify-center text-gray-400 transition-all"
+                >
+                  <Icon />
+                </motion.a>
+              ))}
+            </div>
           </div>
 
-          <div className="w-full md:w-1/3">
-            <h4 className="text-lg font-semibold text-white mb-4">{lang === "ar" ? "روابط" : "Links"}</h4>
-            <ul className="space-y-2">
-              {nav.slice(0, 6).map((item: any) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-gray-400 hover:text-white">
+          <div>
+            <h4 className="text-xl font-bold mb-8 uppercase tracking-widest text-[var(--prim)]">
+              {lang === "ar" ? "روابط سريعة" : "Quick Links"}
+            </h4>
+            <ul className="space-y-4">
+              {nav.map((item: any) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-gray-400 hover:text-white hover:translate-x-2 transition-all inline-block text-lg">
                     {item.label}
                   </Link>
                 </li>
@@ -40,20 +61,57 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="w-full md:w-1/3">
-            <h4 className="text-lg font-semibold text-white mb-4">{lang === "ar" ? "تابعنا" : "Follow Us"}</h4>
-            <div className="flex gap-3">
-              <a href="#" aria-label="facebook" className="p-2 bg-gray-800 rounded text-white"><FaFacebookF /></a>
-              <a href="#" aria-label="twitter" className="p-2 bg-gray-800 rounded text-white"><FaTwitter /></a>
-              <a href="#" aria-label="instagram" className="p-2 bg-gray-800 rounded text-white"><FaInstagram /></a>
+          <div>
+            <h4 className="text-xl font-bold mb-8 uppercase tracking-widest text-[var(--prim)]">
+              {lang === "ar" ? "خدماتنا" : "Our Services"}
+            </h4>
+            <ul className="space-y-4 text-gray-400 text-lg">
+              {lang === 'en' ? (
+                <>
+                  <li className="hover:text-white transition-colors cursor-pointer">Interior Design</li>
+                  <li className="hover:text-white transition-colors cursor-pointer">Furniture Planning</li>
+                  <li className="hover:text-white transition-colors cursor-pointer">Consultation</li>
+                  <li className="hover:text-white transition-colors cursor-pointer">3D Visualization</li>
+                </>
+              ) : (
+                <>
+                  <li className="hover:text-white transition-colors cursor-pointer">التصميم الداخلي</li>
+                  <li className="hover:text-white transition-colors cursor-pointer">تخطيط الأثاث</li>
+                  <li className="hover:text-white transition-colors cursor-pointer">الاستشارات</li>
+                  <li className="hover:text-white transition-colors cursor-pointer">التصور ثلاثي الأبعاد</li>
+                </>
+              )}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xl font-bold mb-8 uppercase tracking-widest text-[var(--prim)]">
+              {lang === "ar" ? "تواصل معنا" : "Contact Info"}
+            </h4>
+            <div className="space-y-6 text-gray-400 text-lg">
+              <div className="flex items-start gap-4">
+                <i className="ri-map-pin-line text-[var(--prim)] text-2xl"></i>
+                <p>123 Luxury Ave, Dubai, UAE</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <i className="ri-phone-line text-[var(--prim)] text-2xl"></i>
+                <p>+971 123 456 789</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <i className="ri-mail-line text-[var(--prim)] text-2xl"></i>
+                <p>info@olivion.com</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-6 text-sm text-gray-500">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
-            <span>© {new Date().getFullYear()} Olivion. {lang === "ar" ? "كل الحقوق محفوظة" : "All rights reserved"}.</span>
-            <span className="hidden sm:inline">{lang === "ar" ? "تصميم باحتراف" : "Designed with care."}</span>
+        <div className="border-t border-gray-900 pt-12 text-gray-500 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-lg">
+            © {new Date().getFullYear()} <span className="text-white font-bold">Olivion</span>. {lang === "ar" ? "جميع الحقوق محفوظة" : "All rights reserved"}.
+          </p>
+          <div className="flex gap-8 text-lg">
+            <a href="#" className="hover:text-white transition-colors">{lang === "ar" ? "سياسة الخصوصية" : "Privacy Policy"}</a>
+            <a href="#" className="hover:text-white transition-colors">{lang === "ar" ? "الشروط والأحكام" : "Terms & Conditions"}</a>
           </div>
         </div>
       </div>

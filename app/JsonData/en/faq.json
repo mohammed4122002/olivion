@@ -1,0 +1,24 @@
+{
+    "faq": {
+        "badge": "Common Questions",
+        "title": "Frequently Asked",
+        "titleAccent": "Questions",
+        "items": [
+            {
+                "id": 1,
+                "question": "How long does a typical project take?",
+                "answer": "A typical project can take anywhere from 2 to 6 months depending on the complexity and scope."
+            },
+            {
+                "id": 2,
+                "question": "Do you offer custom furniture design?",
+                "answer": "Yes, we collaborate with expert craftsmen to create bespoke furniture tailored to your space."
+            },
+            {
+                "id": 3,
+                "question": "Can I see some of your previous work?",
+                "answer": "Absolutely! You can check our gallery and projects section to see our portfolio."
+            }
+        ]
+    }
+}
